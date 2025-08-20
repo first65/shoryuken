@@ -45,7 +45,7 @@ module Shoryuken
       # job processors like DelayedJob. We disable it here since we only use Shoryuken
       # as workers. This should ideally be configurable by the gem user.
       # defined?(::ActiveJob)
-      false
+      nil
     end
     
 
