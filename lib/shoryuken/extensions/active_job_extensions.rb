@@ -37,4 +37,6 @@ module Shoryuken
 end
 
 ActiveJob::Base.include Shoryuken::ActiveJobExtensions::SQSSendMessageParametersAccessor
-ActiveJob::Base.prepend Shoryuken::ActiveJobExtensions::SQSSendMessageParametersSupport
+# This module overrides the enqueue method in the delayed_job_groups_plugin.
+# Commenting it out because we don't use active_job with shoryuken.
+# ActiveJob::Base.prepend Shoryuken::ActiveJobExtensions::SQSSendMessageParametersSupport
