@@ -24,6 +24,7 @@ module Shoryuken
       ruby2_keywords(:initialize) if respond_to?(:ruby2_keywords, true)
 
       def enqueue(options = {})
+        options = {}
         sqs_options = options.extract! :message_attributes,
                                        :message_system_attributes,
                                        :message_deduplication_id,
@@ -37,6 +38,4 @@ module Shoryuken
 end
 
 ActiveJob::Base.include Shoryuken::ActiveJobExtensions::SQSSendMessageParametersAccessor
-# This module overrides the enqueue method in the delayed_job_groups_plugin.
-# Commenting it out because we don't use active_job with shoryuken.
-# ActiveJob::Base.prepend Shoryuken::ActiveJobExtensions::SQSSendMessageParametersSupport
+ActiveJob::Base.prepend Shoryuken::ActiveJobExtensions::SQSSendMessageParametersSupport
