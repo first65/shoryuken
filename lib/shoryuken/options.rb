@@ -36,7 +36,10 @@ module Shoryuken
     end
 
     def active_job?
-      defined?(::ActiveJob)
+      # Shoryuken automatically extends ActiveJob if installed in a rails app
+      # We only use shoryuken as a background job processor
+      # defined?(::ActiveJob)
+      false
     end
 
     def add_group(group, concurrency = nil, delay: nil)
