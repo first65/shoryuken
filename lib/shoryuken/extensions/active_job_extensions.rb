@@ -24,7 +24,6 @@ module Shoryuken
       ruby2_keywords(:initialize) if respond_to?(:ruby2_keywords, true)
 
       def enqueue(options = {})
-        options = {}
         sqs_options = options.extract! :message_attributes,
                                        :message_system_attributes,
                                        :message_deduplication_id,
