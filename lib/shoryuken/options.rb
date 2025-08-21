@@ -41,11 +41,7 @@ module Shoryuken
     end
 
     def active_job?
-      # Shoryuken integrates with ActiveJob by default when installed into a rails app, which can conflict with other
-      # job processors like DelayedJob. We disable it here since we only use Shoryuken
-      # as workers. This should ideally be configurable by the gem user.
-      # defined?(::ActiveJob)
-      nil
+      defined?(::ActiveJob)
     end
     
 
